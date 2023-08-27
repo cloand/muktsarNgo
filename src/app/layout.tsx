@@ -1,8 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import ThemeRegistry from './ThemeRegistry'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <ThemeRegistry options={{ key: 'mui' }}>{children}</ThemeRegistry>
+      </body>
     </html>
   )
 }
