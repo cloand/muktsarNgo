@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Banner />
       <Register />
-      <VideoGallery videosOne={[
+      {/* <VideoGallery videosOne={[
         '/mp4/one.mp4',
         '/mp4/two.mp4',
         '/mp4/three.mp4',
@@ -32,7 +32,7 @@ export default function Home() {
         '/mp4/nine.mp4',
         '/mp4/ten.mp4'
       ]}
-      />
+      /> */}
       <ImageGallery url={[
         '/jpg/one.jpg',
         '/jpg/two.jpg',

@@ -5,7 +5,7 @@ import BannerMedia from "../common/BannerMedia"
 import { getColor } from "@/constant/getCss"
 import { type } from "os"
 import { Satisfy } from "next/font/google"
-import { motion } from 'framer-motion'
+import { motion, useScroll } from 'framer-motion'
 
 const satisfy = Satisfy({ subsets: ['latin'], weight: '400' })
 
@@ -58,8 +58,14 @@ const buttonHoverEffect = {
 }
 
 const Banner = () => {
+    const { scrollYProgress } = useScroll()
+
+    // useMotionValueEvent(scrollY, "change", (latest) => {
+    //     console.log("Page scroll: ", latest)
+    //   })
+
     return (
-        <motion.div>
+        <motion.div >
             <Box sx={{ position: 'relative' }}>
                 <Box
                     sx={{
@@ -69,8 +75,22 @@ const Banner = () => {
                         height: '100%'
                     }}
                 >
-                    <Box
-                        sx={{
+                    <motion.div
+                   
+                    //  animate={{ x: 100 }}
+                    //  initial="hidden"
+                    //  animate="show"
+                    //  variants={{
+                    //     hidden: { opacity: 0 },
+                    //     show: { opacity: 1 }
+                    //  }}
+                    //  transition={{ ease: "linear",
+                    //  duration: 2,
+                    //  x: { duration: 1 } }}
+                    //  dragTransition={{ timeConstant: 800,min: 0,
+                    //     max: 100,
+                    //     bounceDamping: 8 }}
+                        style={{
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'center',
@@ -92,7 +112,7 @@ const Banner = () => {
                             }}
                         >
                             <motion.a whileFocus={{ scale: 1.2 }}>
-                            {/* <Button
+                            <Button
                                 variant='contained'
                                 className={satisfy.className}
                                 sx={{
@@ -103,16 +123,19 @@ const Banner = () => {
                                     borderRadius: '41.438px',
                                     boxShadow: '0px 8.057401657104492px 20.719032287597656px 0px rgba(7, 39, 25, 0.40)'
                                 }}
-                            > */}
+                            >
                                 <Typography variant='h6Bold'>Donate!</Typography>
-                            {/* </Button> */}
+                            </Button>
                             </motion.a>
                         </Box>
-                    </Box>
+                    </motion.div>
+                    {/* </motion.div> */}
                 </Box>
-                <Box>
+                <motion.div initial={{ '--rotate': '0deg' } as any}
+  animate={{ '--rotate': '360deg' } as any}
+  transition={{ duration: 2, repeat: Infinity }}>
                     <BannerMedia />
-                </Box>
+                </motion.div>
             </Box>
         </motion.div>
     )
